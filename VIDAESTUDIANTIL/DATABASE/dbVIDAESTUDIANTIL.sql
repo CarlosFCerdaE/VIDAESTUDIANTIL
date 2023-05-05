@@ -731,17 +731,17 @@ SET IDENTITY_INSERT [dbo].[HABILIDAD] OFF
 GO
 SET IDENTITY_INSERT [dbo].[NIVELEXPERIENCIA] ON 
 GO
-INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (1, N'1 Año')
+INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (1, N'Principiante')
 GO
-INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (2, N'2 Años')
+INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (2, N'Intermedio')
 GO
-INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (3, N'3 Años')
+INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (3, N'Avanzado')
 GO
-INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (4, N'4 Años')
+INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (4, N'Experto')
 GO
-INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (5, N'5 Años')
+INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (5, N'Referente')
 GO
-INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (6, N'5+ Años')
+INSERT [dbo].[NIVELEXPERIENCIA] ([IdNivelExperiencia], [Nombre]) VALUES (6, N'Lider')
 GO
 SET IDENTITY_INSERT [dbo].[NIVELEXPERIENCIA] OFF
 GO
@@ -887,8 +887,83 @@ SET IDENTITY_INSERT [dbo].[REFERENCIA] OFF
 GO
 SET IDENTITY_INSERT [dbo].[USUARIO] ON 
 GO
-
-
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (1, N'Luis', N'Enrique', N'García', N'Fernández', N'luisgarcia@gmail.com', N'85432109', N'Abc123xyz', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (2, N'Ana', N'María', N'Ramos', N'Pérez', N'anaramos@hotmail.com', N'86253479', N'Xyz456abc', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (3, N'Pedro', N'Antonio', N'López', N'Gómez', N'pedrolopez@yahoo.com', N'84651239', N'Pqr789lmn', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (4, N'María', N'Isabel', N'Martínez', N'Hernández', N'mariaisabelm@gmail.com', N'82345678', N'Def456opq', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (5, N'Carlos', N'Alberto', N'González', N'Vargas', N'cgonzalez@gmail.com', N'83456789', N'Ghi123rst', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (6, N'Sofía', N'Cristina', N'Castro', N'Sánchez', N'sofiacastro@gmail.com', N'82567432', N'Jkl567uvw', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (7, N'Jorge', N'Luis', N'Ramírez', N'Chávez', N'jorgeluisr@hotmail.com', N'85562134', N'Mno456fgh', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (8, N'Mónica', N'Raquel', N'Díaz', N'Luna', N'monicadiaz@yahoo.com', N'88902345', N'Ijk123pqr', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (9, N'José', N'Francisco', N'Morales', N'Pérez', N'josemorales@gmail.com', N'84456789', N'Xyz123abc', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (10, N'Laura', N'Isabel', N'Sánchez', N'Gómez', N'lauraisabels@gmail.com', N'82564890', N'Pqr789lmn', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (11, N'Miguel', N'Ángel', N'Hernández', N'Ortiz', N'miguelangelh@hotmail.com', N'89765432', N'Abc456xyz', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (12, N'Carmen', N'María', N'Suárez', N'Fernández', N'carmensuarez@yahoo.com', N'83657234', N'Def789opq', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (13, N'Juan', N'Carlos', N'Rodríguez', N'García', N'juancarlosr@gmail.com', N'84567890', N'Ghi123rst', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (14, N'Fernanda', N'Beatriz', N'Gómez', N'López', N'fernandagomez@gmail.com', N'82234567', N'Jkl456uvw', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (15, N'Arturo', N'Roberto', N'Pérez', N'Vázquez', N'arturoperez@hotmail.com', N'89907654', N'Mno789fgh', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (16, N'Carolina', N'Isabel', N'Santos', N'Sánchez', N'carolinasantos@yahoo.com', N'88890123', N'Ijk456pqr', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (17, N'Manuel', N'Antonio', N'Jiménez', N'Romero', N'manueljimenez@gmail.com', N'85793421', N'Xyz789abc', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (18, N'Sara', N'Cristina', N'López', N'Ramos', N'saralopez@gmail.com', N'84627908', N'Pqr123lmn', 1)
+GO
+INSERT [dbo].[USUARIO] ([IdUsuario], [Nombre], [SegundoNombre], [Apellido], [SegundoApellido], [Correo], [Telefono], [Contrasena], [Estado]) VALUES (19, N'Andrés', N'Fernando', N'García', N'Luna', N'andresgarcia@hotmail.com', N'88881234', N'AbDef789opq', 1)
+GO
+SET IDENTITY_INSERT [dbo].[USUARIO] OFF
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (1, 15, 650, CAST(N'2023-03-18' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (2, 2, 350, CAST(N'2023-02-10' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (3, 11, 550, CAST(N'2023-03-26' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (4, 18, 700, CAST(N'2023-02-25' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (5, 1, 500, CAST(N'2023-01-15' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (6, 10, 400, CAST(N'2023-02-15' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (7, 12, 150, CAST(N'2023-04-02' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (8, 16, 1000, CAST(N'2023-04-10' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (9, 6, 450, CAST(N'2023-02-20' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (10, 4, 250, CAST(N'2023-04-05' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (11, 5, 600, CAST(N'2023-01-28' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (12, 14, 300, CAST(N'2023-02-28' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (13, 8, 200, CAST(N'2023-04-01' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (14, 9, 700, CAST(N'2023-01-23' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (15, 19, 200, CAST(N'2023-04-15' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (16, 7, 900, CAST(N'2023-03-12' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (17, 13, 950, CAST(N'2023-01-20' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (18, 3, 800, CAST(N'2023-03-22' AS Date))
+GO
+INSERT [dbo].[VISTASEMPRESAESTUDIANTE] ([IdEmpresa], [IdEstudiante], [Cantidad], [UltimaVista]) VALUES (19, 17, 400, CAST(N'2023-01-30' AS Date))
 GO
 ALTER TABLE [dbo].[CARRERA] ADD  DEFAULT ((1)) FOR [Estado]
 GO
