@@ -298,35 +298,63 @@ GO
 CREATE PROCEDURE CURRICULO.GetAllFacultad
 AS
 BEGIN
-	SELECT * FROM [CURRICULO].[FACULTAD]
-	WHERE Estado=1
+	SELECT f.IdFacultad,f.Nombre,f.Estado FROM [CURRICULO].[FACULTAD] f
 END
 GO
 
 CREATE PROCEDURE CURRICULO.SaveFacultad
-
-@NOMBRE VARCHAR(100)
+(
+    @NOMBRE VARCHAR(100)
+)
 AS
 BEGIN
-	INSERT INTO [CURRICULO].[FACULTAD] VALUES(DEFAULT,@NOMBRE)
-	SELECT 1 AS ESTADO,'Facultad Guardada Satisfactoriamente' as MENSAJE
+    BEGIN TRY
+        BEGIN TRANSACTION
+
+        INSERT INTO [CURRICULO].[FACULTAD] (Nombre) VALUES (@NOMBRE)
+
+        COMMIT
+        SELECT 1 AS ESTADO, 'Facultad Guardada Satisfactoriamente' AS MENSAJE
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK
+
+        SELECT 0 AS ESTADO, 'Error al guardar la facultad: ' + ERROR_MESSAGE() AS MENSAJE
+    END CATCH
 END
 
-GO
+
 CREATE PROCEDURE CURRICULO.UpdateFacultad
-
-@IDFACULTAD INT,
-@NOMBRE VARCHAR(100),
-@ESTADO BIT
-
+(
+    @IDFACULTAD INT,
+    @NOMBRE VARCHAR(100),
+    @ESTADO BIT,
+    @USUARIO VARCHAR(50)
+)
 AS
 BEGIN
-	UPDATE [CURRICULO].[FACULTAD]
-	SET Nombre = @NOMBRE,Estado=@ESTADO
-	WHERE IdFacultad=@IDFACULTAD
-	SELECT 1 AS ESTADO,'Facultad Actualizada Satisfactoriamente' as MENSAJE
+    BEGIN TRY
+        BEGIN TRANSACTION
 
+        UPDATE [CURRICULO].[FACULTAD]
+        SET Nombre = @NOMBRE, Estado = @ESTADO, UsuarioEdicion = @USUARIO, FechaEdicion = GETDATE() 
+        WHERE IdFacultad = @IDFACULTAD
+
+        COMMIT
+        SELECT 1 AS ESTADO, 'Facultad Actualizada Satisfactoriamente' AS MENSAJE
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK
+
+        SELECT 0 AS ESTADO, 'Error al actualizar la facultad: ' + ERROR_MESSAGE() AS MENSAJE
+    END CATCH
 END
+
+
+
+
 
 
 /*----------------------------------------------------------------------------*/
