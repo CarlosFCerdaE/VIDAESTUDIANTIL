@@ -131,6 +131,45 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\CARRERA.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FACULTAD.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetAllCarrera_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GetAllFacultad_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelVidaEstudiantil.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelVidaEstudiantil.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelVidaEstudiantil.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelVidaEstudiantil.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelVidaEstudiantil.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SaveCarrera_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SaveFacultad_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UpdateCarrera_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UpdateFacultad_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -142,8 +181,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Model\ModelVidaEstudiantil.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelVidaEstudiantil.edmx</DependentUpon>
+      <LastGenOutput>ModelVidaEstudiantil.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ModelVidaEstudiantil.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelVidaEstudiantil.edmx</DependentUpon>
+      <LastGenOutput>ModelVidaEstudiantil.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Model\ModelVidaEstudiantil.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelVidaEstudiantil.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\ModelVidaEstudiantil.edmx.diagram">
+      <DependentUpon>ModelVidaEstudiantil.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -172,7 +228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -186,6 +241,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

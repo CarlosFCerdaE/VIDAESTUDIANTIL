@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VIDAESTUDIANTILModelStoreContainer" CdmEntityContainer="VIDAESTUDIANTILEntities">
+    <EntitySetMapping Name="CARRERA">
+      <EntityTypeMapping TypeName="VIDAESTUDIANTILModel.CARRERA">
+        <MappingFragment StoreEntitySet="CARRERA">
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioEdicion" ColumnName="UsuarioEdicion" />
+          <ScalarProperty Name="FechaEdicion" ColumnName="FechaEdicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACULTAD">
+      <EntityTypeMapping TypeName="VIDAESTUDIANTILModel.FACULTAD">
+        <MappingFragment StoreEntitySet="FACULTAD">
+          <ScalarProperty Name="IdFacultad" ColumnName="IdFacultad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioEdicion" ColumnName="UsuarioEdicion" />
+          <ScalarProperty Name="FechaEdicion" ColumnName="FechaEdicion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_FACULTAD_CARRERA" TypeName="VIDAESTUDIANTILModel.FK_FACULTAD_CARRERA" StoreEntitySet="CARRERA">
+      <EndProperty Name="FACULTAD">
+        <ScalarProperty Name="IdFacultad" ColumnName="IdFacultad" />
+      </EndProperty>
+      <EndProperty Name="CARRERA">
+        <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="IdFacultad" />
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllCarrera" FunctionName="VIDAESTUDIANTILModel.Store.GetAllCarrera">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllCarrera_Result">
+          <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllFacultad" FunctionName="VIDAESTUDIANTILModel.Store.GetAllFacultad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllFacultad_Result">
+          <ScalarProperty Name="IdFacultad" ColumnName="IdFacultad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SaveCarrera" FunctionName="VIDAESTUDIANTILModel.Store.SaveCarrera">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.SaveCarrera_Result">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SaveFacultad" FunctionName="VIDAESTUDIANTILModel.Store.SaveFacultad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.SaveFacultad_Result">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateCarrera" FunctionName="VIDAESTUDIANTILModel.Store.UpdateCarrera">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.UpdateCarrera_Result">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateFacultad" FunctionName="VIDAESTUDIANTILModel.Store.UpdateFacultad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.UpdateFacultad_Result">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VIDAESTUDIANTILModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CARRERA">
+          <Key>
+            <PropertyRef Name="IdCarrera" />
+          </Key>
+          <Property Name="IdCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IdFacultad" Type="int" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="UsuarioEdicion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaEdicion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FACULTAD">
+          <Key>
+            <PropertyRef Name="IdFacultad" />
+          </Key>
+          <Property Name="IdFacultad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="UsuarioEdicion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaEdicion" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_FACULTAD_CARRERA">
+          <End Role="FACULTAD" Type="Self.FACULTAD" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FACULTAD">
+              <PropertyRef Name="IdFacultad" />
+            </Principal>
+            <Dependent Role="CARRERA">
+              <PropertyRef Name="IdFacultad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetAllCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+          <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
+        <Function Name="SaveCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+          <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SaveFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+          <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+          <Parameter Name="IDCARRERA" Type="int" Mode="In" />
+          <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="ESTADO" Type="bit" Mode="In" />
+          <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
+          <Parameter Name="USUARIO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+          <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
+          <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+          <Parameter Name="ESTADO" Type="bit" Mode="In" />
+          <Parameter Name="USUARIO" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="VIDAESTUDIANTILModelStoreContainer">
+          <EntitySet Name="CARRERA" EntityType="Self.CARRERA" Schema="CURRICULO" store:Type="Tables" />
+          <EntitySet Name="FACULTAD" EntityType="Self.FACULTAD" Schema="CURRICULO" store:Type="Tables" />
+          <AssociationSet Name="FK_FACULTAD_CARRERA" Association="Self.FK_FACULTAD_CARRERA">
+            <End Role="FACULTAD" EntitySet="FACULTAD" />
+            <End Role="CARRERA" EntitySet="CARRERA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VIDAESTUDIANTILModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CARRERA">
+          <Key>
+            <PropertyRef Name="IdCarrera" />
+          </Key>
+          <Property Name="IdCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioEdicion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEdicion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FACULTAD" Relationship="Self.FK_FACULTAD_CARRERA" FromRole="CARRERA" ToRole="FACULTAD" />
+        </EntityType>
+        <EntityType Name="FACULTAD">
+          <Key>
+            <PropertyRef Name="IdFacultad" />
+          </Key>
+          <Property Name="IdFacultad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioEdicion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEdicion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CARRERA" Relationship="Self.FK_FACULTAD_CARRERA" FromRole="FACULTAD" ToRole="CARRERA" />
+        </EntityType>
+        <Association Name="FK_FACULTAD_CARRERA">
+          <End Role="FACULTAD" Type="Self.FACULTAD" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="VIDAESTUDIANTILEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CARRERA" EntityType="Self.CARRERA" />
+          <EntitySet Name="FACULTAD" EntityType="Self.FACULTAD" />
+          <AssociationSet Name="FK_FACULTAD_CARRERA" Association="Self.FK_FACULTAD_CARRERA">
+            <End Role="FACULTAD" EntitySet="FACULTAD" />
+            <End Role="CARRERA" EntitySet="CARRERA" />
+          </AssociationSet>
+          <FunctionImport Name="GetAllCarrera" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllCarrera_Result)">
+            <Parameter Name="IDFACULTAD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllFacultad" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllFacultad_Result)" />
+          <FunctionImport Name="SaveCarrera" ReturnType="Collection(VIDAESTUDIANTILModel.SaveCarrera_Result)">
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="IDFACULTAD" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SaveFacultad" ReturnType="Collection(VIDAESTUDIANTILModel.SaveFacultad_Result)">
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCarrera" ReturnType="Collection(VIDAESTUDIANTILModel.UpdateCarrera_Result)">
+            <Parameter Name="IDCARRERA" Mode="In" Type="Int32" />
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="ESTADO" Mode="In" Type="Boolean" />
+            <Parameter Name="IDFACULTAD" Mode="In" Type="Int32" />
+            <Parameter Name="USUARIO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateFacultad" ReturnType="Collection(VIDAESTUDIANTILModel.UpdateFacultad_Result)">
+            <Parameter Name="IDFACULTAD" Mode="In" Type="Int32" />
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="ESTADO" Mode="In" Type="Boolean" />
+            <Parameter Name="USUARIO" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllCarrera_Result">
+          <Property Type="Int32" Name="idCarrera" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllFacultad_Result">
+          <Property Type="Int32" Name="IdFacultad" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SaveCarrera_Result">
+          <Property Type="Int32" Name="ESTADO" Nullable="false" />
+          <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="35" />
+        </ComplexType>
+        <ComplexType Name="SaveFacultad_Result">
+          <Property Type="Int32" Name="ESTADO" Nullable="false" />
+          <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="36" />
+        </ComplexType>
+        <ComplexType Name="UpdateCarrera_Result">
+          <Property Type="Int32" Name="ESTADO" Nullable="false" />
+          <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="38" />
+        </ComplexType>
+        <ComplexType Name="UpdateFacultad_Result">
+          <Property Type="Int32" Name="ESTADO" Nullable="false" />
+          <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="39" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VIDAESTUDIANTILModelStoreContainer" CdmEntityContainer="VIDAESTUDIANTILEntities">
+          <EntitySetMapping Name="CARRERA">
+            <EntityTypeMapping TypeName="VIDAESTUDIANTILModel.CARRERA">
+              <MappingFragment StoreEntitySet="CARRERA">
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioEdicion" ColumnName="UsuarioEdicion" />
+                <ScalarProperty Name="FechaEdicion" ColumnName="FechaEdicion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACULTAD">
+            <EntityTypeMapping TypeName="VIDAESTUDIANTILModel.FACULTAD">
+              <MappingFragment StoreEntitySet="FACULTAD">
+                <ScalarProperty Name="IdFacultad" ColumnName="IdFacultad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioEdicion" ColumnName="UsuarioEdicion" />
+                <ScalarProperty Name="FechaEdicion" ColumnName="FechaEdicion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_FACULTAD_CARRERA" TypeName="VIDAESTUDIANTILModel.FK_FACULTAD_CARRERA" StoreEntitySet="CARRERA">
+            <EndProperty Name="FACULTAD">
+              <ScalarProperty Name="IdFacultad" ColumnName="IdFacultad" />
+            </EndProperty>
+            <EndProperty Name="CARRERA">
+              <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="IdFacultad" />
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllCarrera" FunctionName="VIDAESTUDIANTILModel.Store.GetAllCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllCarrera_Result">
+                <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllFacultad" FunctionName="VIDAESTUDIANTILModel.Store.GetAllFacultad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllFacultad_Result">
+                <ScalarProperty Name="IdFacultad" ColumnName="IdFacultad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SaveCarrera" FunctionName="VIDAESTUDIANTILModel.Store.SaveCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.SaveCarrera_Result">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SaveFacultad" FunctionName="VIDAESTUDIANTILModel.Store.SaveFacultad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.SaveFacultad_Result">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateCarrera" FunctionName="VIDAESTUDIANTILModel.Store.UpdateCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.UpdateCarrera_Result">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateFacultad" FunctionName="VIDAESTUDIANTILModel.Store.UpdateFacultad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.UpdateFacultad_Result">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
