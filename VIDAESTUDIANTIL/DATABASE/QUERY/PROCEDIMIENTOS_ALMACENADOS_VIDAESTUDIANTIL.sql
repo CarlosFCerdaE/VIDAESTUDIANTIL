@@ -41,13 +41,12 @@ END
 
 
 GO
-CREATE PROCEDURE CURRICULO.UpdateCarrera
+ALTER PROCEDURE CURRICULO.UpdateCarrera
 (
     @IDCARRERA INT,
     @NOMBRE VARCHAR(100),
     @ESTADO BIT,
-    @IDFACULTAD INT,
-	@USUARIO VARCHAR(50)
+    @IDFACULTAD INT
 )
 AS
 BEGIN
@@ -55,7 +54,7 @@ BEGIN
         BEGIN TRANSACTION
 
         UPDATE [CURRICULO].[CARRERA]
-        SET Nombre = @NOMBRE, Estado = @ESTADO, IdFacultad = @IDFACULTAD,UsuarioEdicion = @USUARIO,FechaEdicion = GETDATE()
+        SET Nombre = @NOMBRE, Estado = @ESTADO, IdFacultad = @IDFACULTAD,UsuarioEdicion = SUSER_NAME(),FechaEdicion = GETDATE()
         WHERE IdCarrera = @IDCARRERA
 
         COMMIT
@@ -101,12 +100,11 @@ BEGIN
 END
 
 
-CREATE PROCEDURE CURRICULO.UpdateFacultad
+ALTER PROCEDURE CURRICULO.UpdateFacultad
 (
     @IDFACULTAD INT,
     @NOMBRE VARCHAR(100),
-    @ESTADO BIT,
-    @USUARIO VARCHAR(50)
+    @ESTADO BIT
 )
 AS
 BEGIN
@@ -114,7 +112,7 @@ BEGIN
         BEGIN TRANSACTION
 
         UPDATE [CURRICULO].[FACULTAD]
-        SET Nombre = @NOMBRE, Estado = @ESTADO, UsuarioEdicion = @USUARIO, FechaEdicion = GETDATE() 
+        SET Nombre = @NOMBRE, Estado = @ESTADO, UsuarioEdicion = SUSER_NAME(), FechaEdicion = GETDATE() 
         WHERE IdFacultad = @IDFACULTAD
 
         COMMIT
