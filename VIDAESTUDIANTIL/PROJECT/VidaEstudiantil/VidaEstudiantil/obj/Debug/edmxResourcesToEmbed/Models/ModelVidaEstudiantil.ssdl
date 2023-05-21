@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VIDAESTUDIANTILModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CARRERA">
+    <Key>
+      <PropertyRef Name="IdCarrera" />
+    </Key>
+    <Property Name="IdCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="IdFacultad" Type="int" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioEdicion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaEdicion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FACULTAD">
+    <Key>
+      <PropertyRef Name="IdFacultad" />
+    </Key>
+    <Property Name="IdFacultad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioEdicion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaEdicion" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_FACULTAD_CARRERA">
+    <End Role="FACULTAD" Type="Self.FACULTAD" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CARRERA" Type="Self.CARRERA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FACULTAD">
+        <PropertyRef Name="IdFacultad" />
+      </Principal>
+      <Dependent Role="CARRERA">
+        <PropertyRef Name="IdFacultad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetAllCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+    <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAllFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
+  <Function Name="SaveCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+    <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SaveFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+    <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+    <Parameter Name="IDCARRERA" Type="int" Mode="In" />
+    <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="ESTADO" Type="bit" Mode="In" />
+    <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+    <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
+    <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="ESTADO" Type="bit" Mode="In" />
+  </Function>
+  <EntityContainer Name="VIDAESTUDIANTILModelStoreContainer">
+    <EntitySet Name="CARRERA" EntityType="Self.CARRERA" Schema="CURRICULO" store:Type="Tables" />
+    <EntitySet Name="FACULTAD" EntityType="Self.FACULTAD" Schema="CURRICULO" store:Type="Tables" />
+    <AssociationSet Name="FK_FACULTAD_CARRERA" Association="Self.FK_FACULTAD_CARRERA">
+      <End Role="FACULTAD" EntitySet="FACULTAD" />
+      <End Role="CARRERA" EntitySet="CARRERA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
