@@ -25,7 +25,7 @@ namespace VidaEstudiantil.Controllers
                 return Json(
                         new
                         {
-                            succes = true,
+                            success = true,
                             data = Facultad.Lista(),
                             message = "ok"
                         },
@@ -36,7 +36,7 @@ namespace VidaEstudiantil.Controllers
                 return Json(
                     new
                     {
-                        succes = false,
+                        success = false,
                         message = ex.Message
                     },
                     JsonRequestBehavior.AllowGet
@@ -53,7 +53,7 @@ namespace VidaEstudiantil.Controllers
                 return Json(
                         new
                         {
-                            succes = result.ESTADO == 1,
+                            success = result.ESTADO == 1,
                             message = result.MENSAJE
                         },
                         JsonRequestBehavior.AllowGet
@@ -64,7 +64,7 @@ namespace VidaEstudiantil.Controllers
                 return Json(
                     new
                     {
-                        succes = false,
+                        success = false,
                         message = ex.Message
                     },
                     JsonRequestBehavior.AllowGet
@@ -138,16 +138,17 @@ namespace VidaEstudiantil.Controllers
         }
 
         */
-        public ActionResult Actualizar(int id,String nombre, bool estado)
+        public ActionResult Actualizar(int id, string nombre, bool estado)
         {
+
             try
             {
-                UpdateFacultad_Result result = Facultad.Update(id,nombre,estado);
+                UpdateFacultad_Result result = Facultad.Update(id, nombre, estado);
 
                 return Json(
                         new
                         {
-                            succes = result.ESTADO == 1,
+                            success = result.ESTADO == 1,
                             message = result.MENSAJE
                         },
                         JsonRequestBehavior.AllowGet
@@ -158,7 +159,41 @@ namespace VidaEstudiantil.Controllers
                 return Json(
                     new
                     {
-                        succes = false,
+                        success = false,
+                        message = ex.Message
+                    },
+                    JsonRequestBehavior.AllowGet
+                    );
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+
+            try
+            {
+                using(var db = new VIDAESTUDIANTILEntities())
+                {
+                    var facultad = db.FACULTAD.First(f => f.IdFacultad == id);
+                    db.FACULTAD.Remove(facultad);
+                    db.SaveChanges();
+
+                    return Json(
+                        new
+                        {
+                            success = true,
+                            message = "lo logramos ekipo"
+                        },
+                        JsonRequestBehavior.AllowGet
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(
+                    new
+                    {
+                        success = false,
                         message = ex.Message
                     },
                     JsonRequestBehavior.AllowGet
