@@ -39,10 +39,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="GetAllCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+  <Function Name="GetAllCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
+  <Function Name="GetAllFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
+  <Function Name="GetCarreraByFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
     <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
   </Function>
-  <Function Name="GetAllFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
   <Function Name="SaveCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
     <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
     <Parameter Name="IDFACULTAD" Type="int" Mode="In" />

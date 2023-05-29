@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CARRERAsController.cs" />
+    <Compile Include="Controllers\CarreraController.cs" />
     <Compile Include="Controllers\FacultadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -138,6 +139,7 @@
     <Compile Include="Models\CARRERA.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Clases\Carrera.cs" />
     <Compile Include="Models\Clases\Facultad.cs" />
     <Compile Include="Models\FACULTAD.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
@@ -146,6 +148,9 @@
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetAllFacultad_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetCarreraByFacultad_Result.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelVidaEstudiantil.Context.cs">
@@ -196,6 +201,7 @@
       <DependentUpon>ModelVidaEstudiantil.edmx</DependentUpon>
       <LastGenOutput>ModelVidaEstudiantil.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\Carrera.js" />
     <Content Include="Scripts\Facultad.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -237,6 +243,7 @@
     <Content Include="Views\CARRERAs\Details.cshtml" />
     <Content Include="Views\CARRERAs\Edit.cshtml" />
     <Content Include="Views\CARRERAs\Index.cshtml" />
+    <Content Include="Views\Carrera\Carrera.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

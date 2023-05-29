@@ -6,6 +6,9 @@ let isCreate = true;
 $(document).ready(function () {
     console.log("Before");
     loadData();
+    loadFacultad();
+
+
     
 
     $('#btnnuevo').on('click', function (e) {
@@ -24,38 +27,53 @@ $(document).ready(function () {
         }
     });
 
-    $('#dt-facultad').on('click', '.btn-edit' , function (e) {
+    $('#dt-carrera').on('click', '.btn-edit' , function (e) {
 
         e.preventDefault();
         var _this = $(this).parents('tr');
         var data = tableHdr.row(_this).data();
         loadDtl(data);
-        IdRecord = data.IdFacultad;
+        IdRecord = data.idCarrera;
     });
 
-    $('#dt-facultad').on('click', '.btn-delete' , function (e) {
+    $('#dt-carrera').on('click', '.btn-delete' , function (e) {
 
         e.preventDefault();
         var _this = $(this).parents('tr');
         var data = tableHdr.row(_this).data();
         Delete(data);
-        IdRecord = data.IdFacultad;
+        IdRecord = data.IdCarrera;
     });
 
     
 
 });
 
+function loadFacultad() {
+    $.getJSON('/Facultad/Lista', function (data) {
+        $.each(data.data, function (key, entry) {
+            $('#cmbTipo')
+                .append($('<option></option>')
+                    .attr('value', entry.IdFacultad)
+                    .text(entry.Nombre));
+        })
+    });
+}
+
 function loadData() {
-    tableHdr = $('#dt-facultad').DataTable({
+    tableHdr = $('#dt-carrera').DataTable({
         responsive: true,
         destroy: true,
-        ajax: "/Facultad/Lista",
+        ajax: "/Carrera/Lista",
         order: [],
         columns: [
-            { "data": "IdFacultad" },
+            { "data": "idCarrera" },
             { "data": "Nombre" },
-            { "data": "Estado" }
+            { "data": "Estado" },
+            { "data": "nombreFacultad" },
+            {defaultContent: '<button type="button" class="btn btn-info btn-sm btn-edit" data-target="#modal-record"><i class="fa fa-pencil"></i></button>'
+                    + '<button type="button" class="btn btn-danger btn-sm btn-delete" data-target="#modal-record"><i class="fa fa-trash"></i></button>'
+            }
         ],
         processing: true,
         language: {
@@ -82,15 +100,15 @@ function loadData() {
             {
                 width: "10%",
                 targets: 0,
-                data: "IdFacultad"
+                data: "idCarrera"
             },
             {
-                width: "60%",
+                width: "40%",
                 targets: 1,
                 data: "Nombre"
             },
             {
-                width: "29%",
+                width: "10%",
                 targets: 2,
                 data: "Estado",
                 render: function (data, type, row) {
@@ -104,12 +122,16 @@ function loadData() {
                 className: "dt-body-center text-center"
             },
             {
-                width: "1%",
-                targets: 3,
-                data: null,
-                defaultContent: '<button type="button" class="btn btn-info btn-sm btn-edit" data-target="#modal-record"><i class="fa fa-pencil"></i></button>'
-                    + '<button type="button" class="btn btn-danger btn-sm btn-delete" data-target="#modal-record"><i class="fa fa-trash"></i></button>'
+                width: "10%",
+                targets: 0,
+                data: "IdFacultad"
             }
+            //{
+            //    width: "20%",
+            //    targets: 2,
+            //    defaultContent: '<button type="button" class="btn btn-info btn-sm btn-edit" data-target="#modal-record"><i class="fa fa-pencil"></i></button>'
+            //        + '<button type="button" class="btn btn-danger btn-sm btn-delete" data-target="#modal-record"><i class="fa fa-trash"></i></button>'
+            //}
         ]
     });
     console.log("After");
@@ -117,27 +139,32 @@ function loadData() {
 
 function NewRecord() {
     isCreate = true;
-    $(".modal-header h3").text("Nueva Facultad");
+    $(".modal-header h3").text("Nueva Carrera");
 
     $('#txtNombre').val('');
-    $('#txtIdFacultad').val('').hide();
-    $('#txtNombreFacultad').val('').hide();
-    $('#txtEstadoFacultad').val('').hide();
+    $('#txtIdCarrera').val('').hide();
+    $('#txtNombreCarrera').val('').hide();
+    $('#txtEstadoCarrera').val('').hide();
+    $('#cmbTipo').val('');
     $('#labelId').hide();
     $('#labelEstado').hide();
+    $('#labelIdFacultad').val('');
 
     $('#modal-record').modal('toggle');
 }
 
 function loadDtl(data) {
     isCreate = false;
-    $(".modal-header h3").text("Editar Facultad");
+    $(".modal-header h3").text("Editar Carrera");
 
-    $('#txtIdFacultad').val(data.IdFacultad).show();
+    $('#txtIdCarrera').val(data.idCarrera).show();
     $('#txtNombre').val(data.Nombre).show();
-    $("#txtEstadoFacultad").prop("checked", data.Estado).show();
+    $("#txtEstadoCarrera").prop("checked", data.Estado).show();
+    //$('#txtIdFacultad').val(data.IdFacultad).show();
+    $('#cmbTipo').val(data.IdFacultad).show();
     $('#labelId').show();
-    $('#labelEstado').show();
+    $('#labelEstado').show();   
+    $('#labelIdFacultad').show();
 
     $('#modal-record').modal('toggle');
 }
@@ -145,17 +172,17 @@ function loadDtl(data) {
 
 function Delete(data) {
     var record = {
-        id: $.trim(data.IdFacultad),
+        id: $.trim(data.idCarrera),
     }
 
     var params = new URLSearchParams(record);
 
-        
+
     console.log(record);
 
     $.ajax({
         type: 'POST',
-        url: '/Facultad/Delete' + '/?' + params.toString(),
+        url: '/Carrera/Delete' + '/?' + params.toString(),
         success: function (response) {
             console.log(response);
             if (response.success) {
@@ -174,14 +201,15 @@ function Delete(data) {
 
 function Guardar() {
     var record = "";
-    //record += "'IdFacultad':'" + $.trim($('#txtIdFacultad').val()) + "'";
+    //record += "'IdCarrera':'" + $.trim($('#txtIdCarrera').val()) + "'";
     record += "'Nombre':'" + $.trim($('#txtNombre').val()) + "'";
-    //record += ",'Estado':" + $.trim($('#txtEstadoFacultad').val()) + "'";
+    record += ",'IdFacultad':'" + $.trim($('#cmbTipo').val()) + "'";
+    //record += ",'Estado':" + $.trim($('#txtEstadoCarrera').val()) + "'";
     console.log(record)
 
     $.ajax({
         type: 'POST',
-        url: '/Facultad/Guardar',
+        url: '/Carrera/Guardar',
         data: eval('({' + record + '})'),
         success: function (response) {
             console.log(response);
@@ -202,9 +230,10 @@ function Guardar() {
 
 function Editar() {
     var record = {
-        id: $.trim($('#txtIdFacultad').val()),
+        id: $.trim($('#txtIdCarrera').val()),
         nombre: $.trim($('#txtNombre').val()),
-        estado: $.trim($('#txtEstadoFacultad')[0].checked),
+        estado: $.trim($('#txtEstadoCarrera')[0].checked),
+        idFacultad: $.trim($('#cmbTipo').val())
 
     }
 
@@ -215,7 +244,7 @@ function Editar() {
 
     $.ajax({
         type: 'POST',
-        url: '/Facultad/Actualizar' + '/?' + params.toString(),
+        url: '/Carrera/Actualizar' + '/?' + params.toString(),
         success: function (response) {
             console.log(response);
             if (response.success) {

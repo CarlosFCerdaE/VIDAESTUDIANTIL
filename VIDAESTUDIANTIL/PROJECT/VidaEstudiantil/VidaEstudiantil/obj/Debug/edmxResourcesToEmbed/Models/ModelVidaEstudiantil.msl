@@ -36,15 +36,6 @@
       </EndProperty>
       <Condition IsNull="false" ColumnName="IdFacultad" />
     </AssociationSetMapping>
-    <FunctionImportMapping FunctionImportName="GetAllCarrera" FunctionName="VIDAESTUDIANTILModel.Store.GetAllCarrera">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllCarrera_Result">
-          <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="GetAllFacultad" FunctionName="VIDAESTUDIANTILModel.Store.GetAllFacultad">
       <ResultMapping>
         <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllFacultad_Result">
@@ -83,6 +74,26 @@
         <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.UpdateFacultad_Result">
           <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCarreraByFacultad" FunctionName="VIDAESTUDIANTILModel.Store.GetCarreraByFacultad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetCarreraByFacultad_Result">
+          <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllCarrera" FunctionName="VIDAESTUDIANTILModel.Store.GetAllCarrera">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllCarrera_Result">
+          <ScalarProperty Name="idCarrera" ColumnName="idCarrera" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdFacultad" ColumnName="IdFacultad" />
+          <ScalarProperty Name="nombreFacultad" ColumnName="nombreFacultad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

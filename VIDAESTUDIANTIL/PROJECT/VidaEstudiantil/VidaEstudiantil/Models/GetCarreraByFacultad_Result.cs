@@ -11,9 +11,10 @@ namespace VidaEstudiantil.Models
 {
     using System;
     
-    public partial class SaveCarrera_Result
+    public partial class GetCarreraByFacultad_Result
     {
-        public int ESTADO { get; set; }
-        public string MENSAJE { get; set; }
+        public int idCarrera { get; set; }
+        public string Nombre { get; set; }
+        public bool Estado { get; set; }
     }
 }

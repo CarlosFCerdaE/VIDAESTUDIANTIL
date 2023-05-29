@@ -20,7 +20,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Facultad", "Index", "Facultad", new { area = "" }, new { @class = "nav-link" }))</li>
-                    <li>@Html.ActionLink("Carrera", "Index", "Carreras", new { area = "" }, new { @class = "nav-link" }))</li>
+                    <li>@Html.ActionLink("Carrera", "Index", "carrera", new { area = "" }, new { @class = "nav-link" }))</li>
                 </ul>
             </div>
         </div>
@@ -31,7 +31,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Lillieth Cuadra :p </p>
+            <p>&copy; @DateTime.Now.Year </p>
         </footer>
     </div>
 

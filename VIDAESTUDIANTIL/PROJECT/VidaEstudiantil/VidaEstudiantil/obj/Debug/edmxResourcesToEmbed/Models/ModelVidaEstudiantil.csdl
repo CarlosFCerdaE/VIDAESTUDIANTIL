@@ -39,9 +39,6 @@
       <End Role="FACULTAD" EntitySet="FACULTAD" />
       <End Role="CARRERA" EntitySet="CARRERA" />
     </AssociationSet>
-    <FunctionImport Name="GetAllCarrera" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllCarrera_Result)">
-      <Parameter Name="IDFACULTAD" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="GetAllFacultad" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllFacultad_Result)" />
     <FunctionImport Name="SaveCarrera" ReturnType="Collection(VIDAESTUDIANTILModel.SaveCarrera_Result)">
       <Parameter Name="NOMBRE" Mode="In" Type="String" />
@@ -61,12 +58,11 @@
       <Parameter Name="NOMBRE" Mode="In" Type="String" />
       <Parameter Name="ESTADO" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="GetCarreraByFacultad" ReturnType="Collection(VIDAESTUDIANTILModel.GetCarreraByFacultad_Result)">
+      <Parameter Name="IDFACULTAD" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllCarrera" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllCarrera_Result)" />
   </EntityContainer>
-  <ComplexType Name="GetAllCarrera_Result">
-    <Property Type="Int32" Name="idCarrera" Nullable="false" />
-    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
-    <Property Type="Boolean" Name="Estado" Nullable="false" />
-  </ComplexType>
   <ComplexType Name="GetAllFacultad_Result">
     <Property Type="Int32" Name="IdFacultad" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
@@ -87,5 +83,17 @@
   <ComplexType Name="UpdateFacultad_Result">
     <Property Type="Int32" Name="ESTADO" Nullable="false" />
     <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="39" />
+  </ComplexType>
+  <ComplexType Name="GetCarreraByFacultad_Result">
+    <Property Type="Int32" Name="idCarrera" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetAllCarrera_Result">
+    <Property Type="Int32" Name="idCarrera" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+    <Property Type="Int32" Name="IdFacultad" Nullable="true" />
+    <Property Type="String" Name="nombreFacultad" Nullable="false" MaxLength="100" />
   </ComplexType>
 </Schema>
