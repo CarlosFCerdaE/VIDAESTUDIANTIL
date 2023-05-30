@@ -215,6 +215,7 @@ AS
 BEGIN
 	SELECT ne.IdNivelExperiencia, ne.Nombre,ne.Estado FROM [SISTEMA].[NIVELEXPERIENCIA] ne
 END
+EXEC SISTEMA.GetAllNivelExperiencia
 
 /*----------------------------------------------------------------------------*/
 /*Certificacion*/
