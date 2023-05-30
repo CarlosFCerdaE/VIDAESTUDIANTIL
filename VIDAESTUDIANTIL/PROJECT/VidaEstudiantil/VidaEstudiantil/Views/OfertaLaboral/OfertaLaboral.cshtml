@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "CRUD Oferta Laboral";
+}
+
+<style>
+    #dt-records tbody th, #dt-records tbody td {
+        padding: 0.25rem !important;
+        line-height: 1.3em !important;
+        vertical-align: middle !important;
+    }
+
+    #btnnuevo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="br-section-wrapper">
+    <script>
+
+    </script>
+    <button id="btnnuevo" class="btn btn-primary" data-target="#modal-record"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</button>
+
+    <table id="dt-ofertalaboral" class="table-wrapper table display responsive nowrap table-hover" style="width:100%" data-page-length='10'>
+        <thead class="thead-colored thead-primary">
+            <tr>
+                <th>Id Oferta Laboral</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Nivel de Experiencia</th>
+                <th>Horario</th>
+                <th>Salario</th>
+                <th>Moneda</th>
+                <th>Tipo de Trabajo</th>
+                <th>Cargo</th>
+                <th>Area De Trabajo</th>
+                <th>Empresa</th>
+                <th>Estado</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="modal-record" class="modal" role="dialog">
+    <div class="modal-dialog" style="width: 400px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Direcciones AW</h3>
+            </div>
+            <div class="modal-body">
+                <form id="NewRecord" role="form">
+                    <div>
+                        <div class="form-group">
+                            <label id="labelId" for="txtIdOfertaLaboral" class="control-label">Id</label>
+                            <input type="text" id="txtIdOfertaLaboral" class="form-control" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTitulo" class="control-label">Nombre</label>
+                            <input type="text" id="txtTitulo" class="form-control" placeholder="Titulo de Oferta" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtDescripcion" class="control-label">Nombre</label>
+                            <input type="text" id="txtDescripcion" class="form-control" placeholder="Descripcion de Oferta" />
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="cmbNivelExperiencia">Nivel de Experiencia</label>
+                                <select id="cmbNivelExperiencia" class="form-control" placeholder="Tipo" required data-error="Nivel de Expriencia es requerido."></select>
+                                <!-- Error -->
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="txtHorario" class="control-label">Horario</label>
+                            <input type="text" id="txtHorario" class="form-control" placeholder="Horario" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtSalario" class="control-label">Salario</label>
+                            <input type="text" id="txtSalario" class="form-control" placeholder="Salario" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMoneda" class="control-label">Moneda</label>
+                            <input type="text" id="txtMoneda" class="form-control" placeholder="Tipo de Moneda" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTipoTrabajo" class="control-label">Tipo de Trabajo</label>
+                            <input type="text" id="txtTipoTrabajo" class="form-control" placeholder="Tipo de Trabajo" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCargo" class="control-label">Cargo</label>
+                            <input type="text" id="txtCargo" class="form-control" placeholder="Cargo" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAreaTrabajo" class="control-label">Area de Trabajo</label>
+                            <input type="text" id="txtAreaTrabajo" class="form-control" placeholder="Area de Trabajo" />
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="cmbEmpresa">Empresa</label>
+                                <select id="cmbEmpresa" class="form-control" placeholder="Tipo" required data-error="Empresa es requerida."></select>
+                                <!-- Error -->
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label id="labelEstado" for="txtEstadoOfertaLaboral" class="control-label">Estado</label>
+                            <input type="checkbox" id="txtEstadoOfertaLaboral" class="form-control" placeholder="Estado de Oferta Laboral" />
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnguardar" data-dismiss="modal" class="btn btn-primary">Guardar</button>
+                        <button id="btncerrar" data-dismiss="modal" class="btn btn-danger">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Entities/OfertaLaboral.js"></script>

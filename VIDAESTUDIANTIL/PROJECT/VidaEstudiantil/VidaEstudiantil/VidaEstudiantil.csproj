@@ -131,8 +131,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CARRERAsController.cs" />
     <Compile Include="Controllers\CarreraController.cs" />
+    <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\FacultadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NivelExperienciaController.cs" />
+    <Compile Include="Controllers\OfertaLaboralController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,17 +143,32 @@
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Clases\Carrera.cs" />
+    <Compile Include="Models\Clases\Empresa.cs" />
     <Compile Include="Models\Clases\Facultad.cs" />
+    <Compile Include="Models\Clases\NivelExperiencia.cs" />
+    <Compile Include="Models\Clases\OfertaLaboral.cs" />
+    <Compile Include="Models\EMPRESA.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FACULTAD.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetAllCarrera_Result.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetAllEmpresasNames_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetAllFacultad_Result.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetAllNivelExperiencia_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetCarreraByFacultad_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetOfertasLaborales_Result.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelVidaEstudiantil.Context.cs">
@@ -168,16 +186,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelVidaEstudiantil.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NIVELEXPERIENCIA.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OFERTALABORAL.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SaveCarrera_Result.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SaveFacultad_Result.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SaveOfertaLaboral_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UpdateCarrera_Result.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UpdateFacultad_Result.cs">
+      <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UpdateOfertaLaboral_Result.cs">
       <DependentUpon>ModelVidaEstudiantil.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -201,8 +231,9 @@
       <DependentUpon>ModelVidaEstudiantil.edmx</DependentUpon>
       <LastGenOutput>ModelVidaEstudiantil.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\Carrera.js" />
-    <Content Include="Scripts\Facultad.js" />
+    <Content Include="Scripts\Entities\Carrera.js" />
+    <Content Include="Scripts\Entities\OfertaLaboral.js" />
+    <Content Include="Scripts\Entities\Facultad.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\ModelVidaEstudiantil.edmx">
@@ -244,9 +275,12 @@
     <Content Include="Views\CARRERAs\Edit.cshtml" />
     <Content Include="Views\CARRERAs\Index.cshtml" />
     <Content Include="Views\Carrera\Carrera.cshtml" />
+    <Content Include="Views\OfertaLaboral\OfertaLaboral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Empresa\" />
+    <Folder Include="Views\NivelExperiencia\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -8,6 +8,11 @@
         <EntityTypeShape EntityType="VIDAESTUDIANTILModel.CARRERA" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="VIDAESTUDIANTILModel.FACULTAD" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="VIDAESTUDIANTILModel.FK_FACULTAD_CARRERA" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VIDAESTUDIANTILModel.OFERTALABORAL" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VIDAESTUDIANTILModel.EMPRESA" Width="1.5" PointX="0.75" PointY="14.125" />
+        <EntityTypeShape EntityType="VIDAESTUDIANTILModel.NIVELEXPERIENCIA" Width="1.5" PointX="0.75" PointY="10.75" />
+        <AssociationConnector Association="VIDAESTUDIANTILModel.FK_EMPRESA_OFERTALABORAL" />
+        <AssociationConnector Association="VIDAESTUDIANTILModel.FK_NIVELEXPERIENCIA_OFERTALABORAL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

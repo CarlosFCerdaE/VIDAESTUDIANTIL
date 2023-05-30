@@ -11,9 +11,9 @@ namespace VidaEstudiantil.Models
 {
     using System;
     
-    public partial class UpdateCarrera_Result
+    public partial class GetAllEmpresasNames_Result
     {
-        public int ESTADO { get; set; }
-        public string MENSAJE { get; set; }
+        public int IdEmpresa { get; set; }
+        public string Nombre { get; set; }
     }
 }

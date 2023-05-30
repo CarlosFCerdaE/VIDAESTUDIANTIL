@@ -12,15 +12,15 @@ namespace VidaEstudiantil.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class FACULTAD
+    public partial class NIVELEXPERIENCIA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FACULTAD()
+        public NIVELEXPERIENCIA()
         {
-            this.CARRERA = new HashSet<CARRERA>();
+            this.OFERTALABORAL = new HashSet<OFERTALABORAL>();
         }
     
-        public int IdFacultad { get; set; }
+        public int IdNivelExperiencia { get; set; }
         public string Nombre { get; set; }
         public bool Estado { get; set; }
         public string UsuarioCreacion { get; set; }
@@ -29,6 +29,6 @@ namespace VidaEstudiantil.Models
         public Nullable<System.DateTime> FechaEdicion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CARRERA> CARRERA { get; set; }
+        public virtual ICollection<OFERTALABORAL> OFERTALABORAL { get; set; }
     }
 }

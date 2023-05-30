@@ -11,7 +11,7 @@ namespace VidaEstudiantil.Models
 {
     using System;
     
-    public partial class UpdateCarrera_Result
+    public partial class SaveOfertaLaboral_Result
     {
         public int ESTADO { get; set; }
         public string MENSAJE { get; set; }

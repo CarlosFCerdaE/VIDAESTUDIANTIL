@@ -12,23 +12,26 @@ namespace VidaEstudiantil.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class FACULTAD
+    public partial class OFERTALABORAL
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FACULTAD()
-        {
-            this.CARRERA = new HashSet<CARRERA>();
-        }
-    
-        public int IdFacultad { get; set; }
-        public string Nombre { get; set; }
+        public int IdOfertaLaboral { get; set; }
+        public string Titulo { get; set; }
+        public string Descripcion { get; set; }
+        public Nullable<int> IdNivelExperiencia { get; set; }
+        public string Horario { get; set; }
+        public decimal Salario { get; set; }
+        public string Moneda { get; set; }
+        public string TipoTrabajo { get; set; }
+        public string Cargo { get; set; }
+        public string AreaDeTrabajo { get; set; }
+        public Nullable<int> IdEmpresa { get; set; }
         public bool Estado { get; set; }
         public string UsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public string UsuarioEdicion { get; set; }
         public Nullable<System.DateTime> FechaEdicion { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CARRERA> CARRERA { get; set; }
+        public virtual EMPRESA EMPRESA { get; set; }
+        public virtual NIVELEXPERIENCIA NIVELEXPERIENCIA { get; set; }
     }
 }
