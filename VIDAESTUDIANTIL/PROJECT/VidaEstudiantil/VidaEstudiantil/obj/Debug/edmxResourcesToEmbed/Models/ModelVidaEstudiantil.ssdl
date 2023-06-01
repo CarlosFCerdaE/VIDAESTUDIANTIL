@@ -25,6 +25,68 @@
     <Property Name="UsuarioEdicion" Type="varchar" MaxLength="50" />
     <Property Name="FechaEdicion" Type="datetime" />
   </EntityType>
+  <EntityType Name="EMPRESA">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="AreaDeTrabajo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PaginaWeb" Type="varchar" MaxLength="100" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioEdicion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaEdicion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OFERTALABORAL">
+    <Key>
+      <PropertyRef Name="IdOfertaLaboral" />
+    </Key>
+    <Property Name="IdOfertaLaboral" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="IdNivelExperiencia" Type="int" />
+    <Property Name="Horario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Salario" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Moneda" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TipoTrabajo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cargo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="AreaDeTrabajo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdEmpresa" Type="int" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioEdicion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaEdicion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="NIVELEXPERIENCIA">
+    <Key>
+      <PropertyRef Name="IdNivelExperiencia" />
+    </Key>
+    <Property Name="IdNivelExperiencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioEdicion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaEdicion" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_EMPRESA_OFERTALABORAL">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OFERTALABORAL" Type="Self.OFERTALABORAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="OFERTALABORAL">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_FACULTAD_CARRERA">
     <End Role="FACULTAD" Type="Self.FACULTAD" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -39,8 +101,25 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_NIVELEXPERIENCIA_OFERTALABORAL">
+    <End Role="NIVELEXPERIENCIA" Type="Self.NIVELEXPERIENCIA" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OFERTALABORAL" Type="Self.OFERTALABORAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NIVELEXPERIENCIA">
+        <PropertyRef Name="IdNivelExperiencia" />
+      </Principal>
+      <Dependent Role="OFERTALABORAL">
+        <PropertyRef Name="IdNivelExperiencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="GetAllCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
+  <Function Name="GetAllEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
   <Function Name="GetAllFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
+  <Function Name="GetAllNivelExperiencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
+  <Function Name="GetAllOfertas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO" />
   <Function Name="GetCarreraByFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
     <Parameter Name="IDFACULTAD" Type="int" Mode="In" />
   </Function>
@@ -50,6 +129,18 @@
   </Function>
   <Function Name="SaveFacultad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
     <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SaveOferta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+    <Parameter Name="TITULO" Type="varchar" Mode="In" />
+    <Parameter Name="DESCRIPCION" Type="varchar" Mode="In" />
+    <Parameter Name="IDNIVELEXPERIENCIA" Type="int" Mode="In" />
+    <Parameter Name="HORARIO" Type="varchar" Mode="In" />
+    <Parameter Name="SALARIO" Type="decimal" Mode="In" />
+    <Parameter Name="MONEDA" Type="varchar" Mode="In" />
+    <Parameter Name="TIPOTRABAJO" Type="varchar" Mode="In" />
+    <Parameter Name="CARGO" Type="varchar" Mode="In" />
+    <Parameter Name="AREADETRABAJO" Type="varchar" Mode="In" />
+    <Parameter Name="IDEMPRESA" Type="int" Mode="In" />
   </Function>
   <Function Name="UpdateCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
     <Parameter Name="IDCARRERA" Type="int" Mode="In" />
@@ -62,12 +153,36 @@
     <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
     <Parameter Name="ESTADO" Type="bit" Mode="In" />
   </Function>
+  <Function Name="UpdateOferta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CURRICULO">
+    <Parameter Name="IDOFERTALABORAL" Type="int" Mode="In" />
+    <Parameter Name="TITULO" Type="varchar" Mode="In" />
+    <Parameter Name="DESCRIPCION" Type="varchar" Mode="In" />
+    <Parameter Name="IDNIVELEXPERIENCIA" Type="int" Mode="In" />
+    <Parameter Name="HORARIO" Type="varchar" Mode="In" />
+    <Parameter Name="SALARIO" Type="decimal" Mode="In" />
+    <Parameter Name="MONEDA" Type="varchar" Mode="In" />
+    <Parameter Name="TIPOTRABAJO" Type="varchar" Mode="In" />
+    <Parameter Name="CARGO" Type="varchar" Mode="In" />
+    <Parameter Name="AREADETRABAJO" Type="varchar" Mode="In" />
+    <Parameter Name="IDEMPRESA" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="VIDAESTUDIANTILModelStoreContainer">
     <EntitySet Name="CARRERA" EntityType="Self.CARRERA" Schema="CURRICULO" store:Type="Tables" />
     <EntitySet Name="FACULTAD" EntityType="Self.FACULTAD" Schema="CURRICULO" store:Type="Tables" />
+    <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="OFERTALABORAL" store:Type="Tables" />
+    <EntitySet Name="OFERTALABORAL" EntityType="Self.OFERTALABORAL" Schema="OFERTALABORAL" store:Type="Tables" />
+    <EntitySet Name="NIVELEXPERIENCIA" EntityType="Self.NIVELEXPERIENCIA" Schema="SISTEMA" store:Type="Tables" />
+    <AssociationSet Name="FK_EMPRESA_OFERTALABORAL" Association="Self.FK_EMPRESA_OFERTALABORAL">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="OFERTALABORAL" EntitySet="OFERTALABORAL" />
+    </AssociationSet>
     <AssociationSet Name="FK_FACULTAD_CARRERA" Association="Self.FK_FACULTAD_CARRERA">
       <End Role="FACULTAD" EntitySet="FACULTAD" />
       <End Role="CARRERA" EntitySet="CARRERA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NIVELEXPERIENCIA_OFERTALABORAL" Association="Self.FK_NIVELEXPERIENCIA_OFERTALABORAL">
+      <End Role="NIVELEXPERIENCIA" EntitySet="NIVELEXPERIENCIA" />
+      <End Role="OFERTALABORAL" EntitySet="OFERTALABORAL" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

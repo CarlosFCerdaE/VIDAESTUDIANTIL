@@ -97,5 +97,127 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllOfertas" FunctionName="VIDAESTUDIANTILModel.Store.GetAllOfertas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllOfertas_Result">
+          <ScalarProperty Name="IdOfertaLaboral" ColumnName="IdOfertaLaboral" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdNivelExperiencia" ColumnName="IdNivelExperiencia" />
+          <ScalarProperty Name="nivelExperiencia" ColumnName="nivelExperiencia" />
+          <ScalarProperty Name="Horario" ColumnName="Horario" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="TipoTrabajo" ColumnName="TipoTrabajo" />
+          <ScalarProperty Name="AreaDeTrabajo" ColumnName="AreaDeTrabajo" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="nombreEmpresa" ColumnName="nombreEmpresa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SaveOferta" FunctionName="VIDAESTUDIANTILModel.Store.SaveOferta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.SaveOferta_Result">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateOferta" FunctionName="VIDAESTUDIANTILModel.Store.UpdateOferta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.UpdateOferta_Result">
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="MENSAJE" ColumnName="MENSAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="OFERTALABORAL">
+      <EntityTypeMapping TypeName="VIDAESTUDIANTILModel.OFERTALABORAL">
+        <MappingFragment StoreEntitySet="OFERTALABORAL">
+          <ScalarProperty Name="FechaEdicion" ColumnName="FechaEdicion" />
+          <ScalarProperty Name="UsuarioEdicion" ColumnName="UsuarioEdicion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="AreaDeTrabajo" ColumnName="AreaDeTrabajo" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="TipoTrabajo" ColumnName="TipoTrabajo" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Horario" ColumnName="Horario" />
+          <ScalarProperty Name="IdNivelExperiencia" ColumnName="IdNivelExperiencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="IdOfertaLaboral" ColumnName="IdOfertaLaboral" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllEmpresa" FunctionName="VIDAESTUDIANTILModel.Store.GetAllEmpresa">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllEmpresa_Result">
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="AreaDeTrabajo" ColumnName="AreaDeTrabajo" />
+          <ScalarProperty Name="PaginaWeb" ColumnName="PaginaWeb" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllNivelExperiencia" FunctionName="VIDAESTUDIANTILModel.Store.GetAllNivelExperiencia">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VIDAESTUDIANTILModel.GetAllNivelExperiencia_Result">
+          <ScalarProperty Name="IdNivelExperiencia" ColumnName="IdNivelExperiencia" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="EMPRESA">
+      <EntityTypeMapping TypeName="VIDAESTUDIANTILModel.EMPRESA">
+        <MappingFragment StoreEntitySet="EMPRESA">
+          <ScalarProperty Name="FechaEdicion" ColumnName="FechaEdicion" />
+          <ScalarProperty Name="UsuarioEdicion" ColumnName="UsuarioEdicion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="PaginaWeb" ColumnName="PaginaWeb" />
+          <ScalarProperty Name="AreaDeTrabajo" ColumnName="AreaDeTrabajo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NIVELEXPERIENCIA">
+      <EntityTypeMapping TypeName="VIDAESTUDIANTILModel.NIVELEXPERIENCIA">
+        <MappingFragment StoreEntitySet="NIVELEXPERIENCIA">
+          <ScalarProperty Name="FechaEdicion" ColumnName="FechaEdicion" />
+          <ScalarProperty Name="UsuarioEdicion" ColumnName="UsuarioEdicion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdNivelExperiencia" ColumnName="IdNivelExperiencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_EMPRESA_OFERTALABORAL" TypeName="VIDAESTUDIANTILModel.FK_EMPRESA_OFERTALABORAL" StoreEntitySet="OFERTALABORAL">
+      <EndProperty Name="OFERTALABORAL">
+        <ScalarProperty Name="IdOfertaLaboral" ColumnName="IdOfertaLaboral" />
+      </EndProperty>
+      <EndProperty Name="EMPRESA">
+        <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+      </EndProperty>
+      <Condition ColumnName="IdEmpresa" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_NIVELEXPERIENCIA_OFERTALABORAL" TypeName="VIDAESTUDIANTILModel.FK_NIVELEXPERIENCIA_OFERTALABORAL" StoreEntitySet="OFERTALABORAL">
+      <EndProperty Name="OFERTALABORAL">
+        <ScalarProperty Name="IdOfertaLaboral" ColumnName="IdOfertaLaboral" />
+      </EndProperty>
+      <EndProperty Name="NIVELEXPERIENCIA">
+        <ScalarProperty Name="IdNivelExperiencia" ColumnName="IdNivelExperiencia" />
+      </EndProperty>
+      <Condition ColumnName="IdNivelExperiencia" IsNull="false" />
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

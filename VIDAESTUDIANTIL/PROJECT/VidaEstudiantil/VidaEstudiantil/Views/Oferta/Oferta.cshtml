@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "CRUD OFERTA";
+}
+
+<style>
+    #dt-records tbody th, #dt-records tbody td {
+        padding: 0.25rem !important;
+        line-height: 1.3em !important;
+        vertical-align: middle !important;
+    }
+
+    #btnnuevo {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="br-section-wrapper">
+    <script>
+
+    </script>
+    <button id="btnnuevo" class="btn btn-primary" data-target="#modal-record"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</button>
+
+    <table id="dt-oferta" class="table-wrapper table display responsive nowrap table-hover" style="width:100%" data-page-length='10'>
+        <thead class="thead-colored thead-primary">
+            <tr>
+                <th>Id Oferta</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Nivel de Experiencia</th>
+                <th>Horario</th>
+                <th>Salario</th>
+                <th>Moneda</th>
+                <th>TipoTrabajo</th>
+                <th>Cargo</th>
+                <th>Area de trabajo</th>
+                <th> Nombre de la empresa</th>
+                <th> Opciones</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="modal-record" class="modal" role="dialog">
+    <div class="modal-dialog" style="width: 400px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Direcciones AW</h3>
+            </div>
+            <div class="modal-body">
+                <form id="NewRecord" role="form">
+                    <div>
+                        <div class="form-group">
+                            <label id="labelId" for="txtIdOferta" class="control-label">Id</label>
+                            <input type="text" id="txtIdOferta" class="form-control" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtNombre" class="control-label">Titulo</label>
+                            <input type="text" id="txtNombre" class="form-control" placeholder="Nombre de Oferta" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtDescripcion" class="control-label">Descripcion</label>
+                            <input type="text" id="txtDescripcion" class="form-control" placeholder="Descripcion de la oferta" />
+                        </div>
+                        <div class="form-group">
+                            <label for="cmbTipo" class="control-label">Nivel Experiencia</label>
+                            <select id="cmbTipoNivelExp" class="form-control" placeholder="Nivel Expperiencia" required data-error="Experiencia es requerida."></select>
+                            <!-- Error -->
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtHorario" class="control-label">Horario</label>
+                            <input type="text" id="txtHorario" class="form-control" placeholder="Horario" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtSalario" class="control-label">Salario</label>
+                            <input type="number" id="txtSalario" class="form-control" placeholder="Salario" />
+                        </div>
+                        @*<div>
+            <input type="radio" id="monedaChoice1" name="moneda" value="Cordobas" />
+            <label for="monendaChoice1">Cordobasl</label>
+
+            <input type="radio" id="monedaChoice2" name="moneda" value="Dolares" />
+            <label for="monedatChoice2">Dolares</label>
+        </div>*@
+                        <div class="form-group">
+                            <label for="cmbTipoMoneda" class="control-label">Moneda</label>
+                            <select id="cmbTipoMoneda" class="form-control" placeholder="Tipo de moneda" required data-error="El tipo de moneda es Experiencia es requerida."></select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cmbTipo" class="control-label">Tipo de Trabajo</label>
+                            <select id="txtTipoTrabajo" class="form-control" placeholder="Tipo de Trabajo" required data-error="Experiencia es requerida."></select>
+                            <!-- Error -->
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtCargo" class="control-label">Cargo</label>
+                            <input type="text" id="txtCargo" class="form-control" placeholder="Cargo" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAreaTrabajo" class="control-label">Area de Trabajo</label>
+                            <input type="text" id="txtAreaTrabajo" class="form-control" placeholder="Area de Trabajo" />
+                        </div>
+                        <div class="form-group">
+                            <label for="cmbTipoEmpresa">Empresa</label>
+                            <select id="cmbTipoEmpresa" class="form-control" placeholder="Nombre de la empresa" required data-error="Empresa es requerido."></select>
+                            <!-- Error -->
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+
+                        <div class="form-group">
+                            <label id="labelEstado" for="txtEstadoOferta" class="control-label">Estado</label>
+                            <input type="checkbox" id="txtEstadoOferta" class="form-control" placeholder="Nombre de Oferta" />
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnguardar" data-dismiss="modal" class="btn btn-primary">Guardar</button>
+                            <button id="btncerrar" data-dismiss="modal" class="btn btn-danger">Cerrar</button>
+                        </div>
+</form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<script src="~/Scripts/catalogos/Oferta.js"></script>

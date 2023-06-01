@@ -62,6 +62,45 @@
       <Parameter Name="IDFACULTAD" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="GetAllCarrera" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllCarrera_Result)" />
+    <FunctionImport Name="GetAllOfertas" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllOfertas_Result)" />
+    <FunctionImport Name="SaveOferta" ReturnType="Collection(VIDAESTUDIANTILModel.SaveOferta_Result)">
+      <Parameter Name="TITULO" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPCION" Mode="In" Type="String" />
+      <Parameter Name="IDNIVELEXPERIENCIA" Mode="In" Type="Int32" />
+      <Parameter Name="HORARIO" Mode="In" Type="String" />
+      <Parameter Name="SALARIO" Mode="In" Type="Decimal" />
+      <Parameter Name="MONEDA" Mode="In" Type="String" />
+      <Parameter Name="TIPOTRABAJO" Mode="In" Type="String" />
+      <Parameter Name="CARGO" Mode="In" Type="String" />
+      <Parameter Name="AREADETRABAJO" Mode="In" Type="String" />
+      <Parameter Name="IDEMPRESA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateOferta" ReturnType="Collection(VIDAESTUDIANTILModel.UpdateOferta_Result)">
+      <Parameter Name="IDOFERTALABORAL" Mode="In" Type="Int32" />
+      <Parameter Name="TITULO" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPCION" Mode="In" Type="String" />
+      <Parameter Name="IDNIVELEXPERIENCIA" Mode="In" Type="Int32" />
+      <Parameter Name="HORARIO" Mode="In" Type="String" />
+      <Parameter Name="SALARIO" Mode="In" Type="Decimal" />
+      <Parameter Name="MONEDA" Mode="In" Type="String" />
+      <Parameter Name="TIPOTRABAJO" Mode="In" Type="String" />
+      <Parameter Name="CARGO" Mode="In" Type="String" />
+      <Parameter Name="AREADETRABAJO" Mode="In" Type="String" />
+      <Parameter Name="IDEMPRESA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="OFERTALABORAL" EntityType="VIDAESTUDIANTILModel.OFERTALABORAL" />
+    <FunctionImport Name="GetAllEmpresa" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllEmpresa_Result)" />
+    <FunctionImport Name="GetAllNivelExperiencia" ReturnType="Collection(VIDAESTUDIANTILModel.GetAllNivelExperiencia_Result)" />
+    <EntitySet Name="EMPRESA" EntityType="VIDAESTUDIANTILModel.EMPRESA" />
+    <EntitySet Name="NIVELEXPERIENCIA" EntityType="VIDAESTUDIANTILModel.NIVELEXPERIENCIA" />
+    <AssociationSet Name="FK_EMPRESA_OFERTALABORAL" Association="VIDAESTUDIANTILModel.FK_EMPRESA_OFERTALABORAL">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="OFERTALABORAL" EntitySet="OFERTALABORAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NIVELEXPERIENCIA_OFERTALABORAL" Association="VIDAESTUDIANTILModel.FK_NIVELEXPERIENCIA_OFERTALABORAL">
+      <End Role="NIVELEXPERIENCIA" EntitySet="NIVELEXPERIENCIA" />
+      <End Role="OFERTALABORAL" EntitySet="OFERTALABORAL" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="GetAllFacultad_Result">
     <Property Type="Int32" Name="IdFacultad" Nullable="false" />
@@ -96,4 +135,101 @@
     <Property Type="Int32" Name="IdFacultad" Nullable="true" />
     <Property Type="String" Name="nombreFacultad" Nullable="false" MaxLength="100" />
   </ComplexType>
+  <ComplexType Name="GetAllOfertas_Result">
+    <Property Type="Int32" Name="IdOfertaLaboral" Nullable="false" />
+    <Property Type="String" Name="Titulo" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="300" />
+    <Property Type="Int32" Name="IdNivelExperiencia" Nullable="true" />
+    <Property Type="String" Name="nivelExperiencia" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Horario" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Salario" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="String" Name="Moneda" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="TipoTrabajo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="AreaDeTrabajo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Cargo" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="IdEmpresa" Nullable="true" />
+    <Property Type="String" Name="nombreEmpresa" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="SaveOferta_Result">
+    <Property Type="Int32" Name="ESTADO" Nullable="false" />
+    <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="35" />
+  </ComplexType>
+  <ComplexType Name="UpdateOferta_Result">
+    <Property Type="Int32" Name="ESTADO" Nullable="false" />
+    <Property Type="String" Name="MENSAJE" Nullable="false" MaxLength="38" />
+  </ComplexType>
+  <EntityType Name="OFERTALABORAL">
+    <Key>
+      <PropertyRef Name="IdOfertaLaboral" />
+    </Key>
+    <Property Name="IdOfertaLaboral" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="IdNivelExperiencia" Type="Int32" />
+    <Property Name="Horario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salario" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="Moneda" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TipoTrabajo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Cargo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AreaDeTrabajo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmpresa" Type="Int32" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioEdicion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaEdicion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EMPRESA" Relationship="VIDAESTUDIANTILModel.FK_EMPRESA_OFERTALABORAL" FromRole="OFERTALABORAL" ToRole="EMPRESA" />
+    <NavigationProperty Name="NIVELEXPERIENCIA" Relationship="VIDAESTUDIANTILModel.FK_NIVELEXPERIENCIA_OFERTALABORAL" FromRole="OFERTALABORAL" ToRole="NIVELEXPERIENCIA" />
+  </EntityType>
+  <ComplexType Name="GetAllEmpresa_Result">
+    <Property Type="Int32" Name="IdEmpresa" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="AreaDeTrabajo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PaginaWeb" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="GetAllNivelExperiencia_Result">
+    <Property Type="Int32" Name="IdNivelExperiencia" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="EMPRESA">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AreaDeTrabajo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaginaWeb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioEdicion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaEdicion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OFERTALABORAL" Relationship="VIDAESTUDIANTILModel.FK_EMPRESA_OFERTALABORAL" FromRole="EMPRESA" ToRole="OFERTALABORAL" />
+  </EntityType>
+  <EntityType Name="NIVELEXPERIENCIA">
+    <Key>
+      <PropertyRef Name="IdNivelExperiencia" />
+    </Key>
+    <Property Name="IdNivelExperiencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioEdicion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaEdicion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OFERTALABORAL" Relationship="VIDAESTUDIANTILModel.FK_NIVELEXPERIENCIA_OFERTALABORAL" FromRole="NIVELEXPERIENCIA" ToRole="OFERTALABORAL" />
+  </EntityType>
+  <Association Name="FK_EMPRESA_OFERTALABORAL">
+    <End Type="VIDAESTUDIANTILModel.EMPRESA" Role="EMPRESA" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="VIDAESTUDIANTILModel.OFERTALABORAL" Role="OFERTALABORAL" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_NIVELEXPERIENCIA_OFERTALABORAL">
+    <End Type="VIDAESTUDIANTILModel.NIVELEXPERIENCIA" Role="NIVELEXPERIENCIA" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="VIDAESTUDIANTILModel.OFERTALABORAL" Role="OFERTALABORAL" Multiplicity="*" />
+  </Association>
 </Schema>

@@ -29,6 +29,9 @@ namespace VidaEstudiantil.Models
     
         public virtual DbSet<CARRERA> CARRERA { get; set; }
         public virtual DbSet<FACULTAD> FACULTAD { get; set; }
+        public virtual DbSet<OFERTALABORAL> OFERTALABORAL { get; set; }
+        public virtual DbSet<EMPRESA> EMPRESA { get; set; }
+        public virtual DbSet<NIVELEXPERIENCIA> NIVELEXPERIENCIA { get; set; }
     
         public virtual ObjectResult<GetAllFacultad_Result> GetAllFacultad()
         {
@@ -107,6 +110,115 @@ namespace VidaEstudiantil.Models
         public virtual ObjectResult<GetAllCarrera_Result> GetAllCarrera()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllCarrera_Result>("GetAllCarrera");
+        }
+    
+        public virtual ObjectResult<GetAllOfertas_Result> GetAllOfertas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllOfertas_Result>("GetAllOfertas");
+        }
+    
+        public virtual ObjectResult<SaveOferta_Result> SaveOferta(string tITULO, string dESCRIPCION, Nullable<int> iDNIVELEXPERIENCIA, string hORARIO, Nullable<decimal> sALARIO, string mONEDA, string tIPOTRABAJO, string cARGO, string aREADETRABAJO, Nullable<int> iDEMPRESA)
+        {
+            var tITULOParameter = tITULO != null ?
+                new ObjectParameter("TITULO", tITULO) :
+                new ObjectParameter("TITULO", typeof(string));
+    
+            var dESCRIPCIONParameter = dESCRIPCION != null ?
+                new ObjectParameter("DESCRIPCION", dESCRIPCION) :
+                new ObjectParameter("DESCRIPCION", typeof(string));
+    
+            var iDNIVELEXPERIENCIAParameter = iDNIVELEXPERIENCIA.HasValue ?
+                new ObjectParameter("IDNIVELEXPERIENCIA", iDNIVELEXPERIENCIA) :
+                new ObjectParameter("IDNIVELEXPERIENCIA", typeof(int));
+    
+            var hORARIOParameter = hORARIO != null ?
+                new ObjectParameter("HORARIO", hORARIO) :
+                new ObjectParameter("HORARIO", typeof(string));
+    
+            var sALARIOParameter = sALARIO.HasValue ?
+                new ObjectParameter("SALARIO", sALARIO) :
+                new ObjectParameter("SALARIO", typeof(decimal));
+    
+            var mONEDAParameter = mONEDA != null ?
+                new ObjectParameter("MONEDA", mONEDA) :
+                new ObjectParameter("MONEDA", typeof(string));
+    
+            var tIPOTRABAJOParameter = tIPOTRABAJO != null ?
+                new ObjectParameter("TIPOTRABAJO", tIPOTRABAJO) :
+                new ObjectParameter("TIPOTRABAJO", typeof(string));
+    
+            var cARGOParameter = cARGO != null ?
+                new ObjectParameter("CARGO", cARGO) :
+                new ObjectParameter("CARGO", typeof(string));
+    
+            var aREADETRABAJOParameter = aREADETRABAJO != null ?
+                new ObjectParameter("AREADETRABAJO", aREADETRABAJO) :
+                new ObjectParameter("AREADETRABAJO", typeof(string));
+    
+            var iDEMPRESAParameter = iDEMPRESA.HasValue ?
+                new ObjectParameter("IDEMPRESA", iDEMPRESA) :
+                new ObjectParameter("IDEMPRESA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SaveOferta_Result>("SaveOferta", tITULOParameter, dESCRIPCIONParameter, iDNIVELEXPERIENCIAParameter, hORARIOParameter, sALARIOParameter, mONEDAParameter, tIPOTRABAJOParameter, cARGOParameter, aREADETRABAJOParameter, iDEMPRESAParameter);
+        }
+    
+        public virtual ObjectResult<UpdateOferta_Result> UpdateOferta(Nullable<int> iDOFERTALABORAL, string tITULO, string dESCRIPCION, Nullable<int> iDNIVELEXPERIENCIA, string hORARIO, Nullable<decimal> sALARIO, string mONEDA, string tIPOTRABAJO, string cARGO, string aREADETRABAJO, Nullable<int> iDEMPRESA)
+        {
+            var iDOFERTALABORALParameter = iDOFERTALABORAL.HasValue ?
+                new ObjectParameter("IDOFERTALABORAL", iDOFERTALABORAL) :
+                new ObjectParameter("IDOFERTALABORAL", typeof(int));
+    
+            var tITULOParameter = tITULO != null ?
+                new ObjectParameter("TITULO", tITULO) :
+                new ObjectParameter("TITULO", typeof(string));
+    
+            var dESCRIPCIONParameter = dESCRIPCION != null ?
+                new ObjectParameter("DESCRIPCION", dESCRIPCION) :
+                new ObjectParameter("DESCRIPCION", typeof(string));
+    
+            var iDNIVELEXPERIENCIAParameter = iDNIVELEXPERIENCIA.HasValue ?
+                new ObjectParameter("IDNIVELEXPERIENCIA", iDNIVELEXPERIENCIA) :
+                new ObjectParameter("IDNIVELEXPERIENCIA", typeof(int));
+    
+            var hORARIOParameter = hORARIO != null ?
+                new ObjectParameter("HORARIO", hORARIO) :
+                new ObjectParameter("HORARIO", typeof(string));
+    
+            var sALARIOParameter = sALARIO.HasValue ?
+                new ObjectParameter("SALARIO", sALARIO) :
+                new ObjectParameter("SALARIO", typeof(decimal));
+    
+            var mONEDAParameter = mONEDA != null ?
+                new ObjectParameter("MONEDA", mONEDA) :
+                new ObjectParameter("MONEDA", typeof(string));
+    
+            var tIPOTRABAJOParameter = tIPOTRABAJO != null ?
+                new ObjectParameter("TIPOTRABAJO", tIPOTRABAJO) :
+                new ObjectParameter("TIPOTRABAJO", typeof(string));
+    
+            var cARGOParameter = cARGO != null ?
+                new ObjectParameter("CARGO", cARGO) :
+                new ObjectParameter("CARGO", typeof(string));
+    
+            var aREADETRABAJOParameter = aREADETRABAJO != null ?
+                new ObjectParameter("AREADETRABAJO", aREADETRABAJO) :
+                new ObjectParameter("AREADETRABAJO", typeof(string));
+    
+            var iDEMPRESAParameter = iDEMPRESA.HasValue ?
+                new ObjectParameter("IDEMPRESA", iDEMPRESA) :
+                new ObjectParameter("IDEMPRESA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UpdateOferta_Result>("UpdateOferta", iDOFERTALABORALParameter, tITULOParameter, dESCRIPCIONParameter, iDNIVELEXPERIENCIAParameter, hORARIOParameter, sALARIOParameter, mONEDAParameter, tIPOTRABAJOParameter, cARGOParameter, aREADETRABAJOParameter, iDEMPRESAParameter);
+        }
+    
+        public virtual ObjectResult<GetAllEmpresa_Result> GetAllEmpresa()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllEmpresa_Result>("GetAllEmpresa");
+        }
+    
+        public virtual ObjectResult<GetAllNivelExperiencia_Result> GetAllNivelExperiencia()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllNivelExperiencia_Result>("GetAllNivelExperiencia");
         }
     }
 }
